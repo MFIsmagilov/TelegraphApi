@@ -12,7 +12,7 @@ class TelegraphAccountBuilder(
     private val requests: HttpClientWrapper = HttpClientWrapper()
     private val createPageUrl = "https://api.telegra.ph/createAccount"
 
-    fun build(): Account? {
+    fun build(): Account {
         val author = Author(short_name, author_name, author_url)
         return requests.post(url = createPageUrl, obj = author, clazz = Account::class.java)
     }

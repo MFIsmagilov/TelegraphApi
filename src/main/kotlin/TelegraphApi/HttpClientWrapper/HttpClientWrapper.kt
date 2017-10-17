@@ -26,7 +26,7 @@ class HttpClientWrapper{
     private val src = "src"
     private val error = "error"
 
-    fun <T> post(url: String, clazz: Class<out T>, obj: Any? = null,  file: TelegraphFile? = null):T? {
+    fun <T> post(url: String, clazz: Class<out T>, obj: Any? = null,  file: TelegraphFile? = null):T {
 
         if(obj == null && file == null)
             throw Exception("One of the parameters is needed: obj or file")
@@ -42,7 +42,6 @@ class HttpClientWrapper{
             val resultPostRequest = post(url, headers, file)
             return Gson().fromJson(resultPostRequest.toString(), clazz)
         }
-        return null
     }
 
     //todo: need to be redone
