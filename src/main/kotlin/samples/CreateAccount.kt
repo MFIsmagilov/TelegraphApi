@@ -1,4 +1,4 @@
-package sample
+package samples
 
 import TelegraphApi.Telegraph
 import TelegraphApi.TelegraphAccountBuilder
