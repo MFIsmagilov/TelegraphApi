@@ -1,7 +1,5 @@
 package TelegraphApi.models
 
-import TelegraphApi.uploaders.upload
-
 
 /**
  * Created by maratismagilov on 13.10.17.
@@ -10,85 +8,102 @@ import TelegraphApi.uploaders.upload
 interface Node
 
 open class NodeElement(
+        vararg var children: Any, //Array<Node>,,,,,
         val tag: String? = null,
-        open val children: Any? = null, //List<Node>,,,
-        open val attrs: Any? = null
-): Node
+        open val attrs: Attrs? = null
+) : Node
 
-
-class ImageNodeElement(
-        pathImage: String,
-        description: String
-): NodeElement("figure"){
-    override val children: Any?
-    init {
-        val image = ImgNodeElement(attrs = mapOf(Pair("src", upload(pathImage)?.link)))
-        val figcaption = FigcaptionNodeElement(listOf(description))
-        children = listOf(figcaption, image)
-    }
-}
 
 class ImgNodeElement(
-        children: Any? = null,
-        attrs: Any? = null
-):NodeElement("img", children, attrs)
+        vararg children: Any,
+        attrs: Attrs? = null
+) : NodeElement(*children, tag = "img", attrs = attrs)
 
 class ParagraphNodeElement(
-        children: Any? = null,
-        attrs: Any? = null
-):NodeElement("p", children, attrs)
+        vararg children: Any,
+        attrs: Attrs? = null
+) : NodeElement(*children, tag = "p", attrs =  attrs)
+
+class UlNodeElement(
+        vararg children: Any,
+        attrs: Attrs? = null
+) : NodeElement(*children, tag = "ul", attrs = attrs)
+
+class ANodeElement(
+        vararg children: Any,
+        attrs: Attrs? = null
+) : NodeElement(*children, tag = "a", attrs = attrs)
+
+class BNodeElement(
+        vararg children: Any,
+        attrs: Attrs? = null
+) : NodeElement(*children, tag = "b", attrs = attrs)
+
 
 class AsideNodeElement(
-        children: Any? = null,
-        attrs: Any? = null
-):NodeElement("aside", children, attrs)
+        vararg children: Any,
+        attrs: Attrs? = null
+) : NodeElement(*children, tag = "aside", attrs = attrs)
 
 class BoldNodeElement(
-        children: Any? = null,
-        attrs: Any? = null
-):NodeElement("b", children, attrs)
+        vararg children: Any,
+        attrs: Attrs? = null
+) : NodeElement(*children, tag = "b", attrs = attrs)
 
 class BlockquoteNodeElement(
-        children: Any? = null,
-        attrs: Any? = null
-):NodeElement("blockquote", children, attrs)
+        vararg children: Any,
+        attrs: Attrs? = null
+) : NodeElement(*children, tag = "blockquote", attrs =  attrs)
 
 class BrNodeElement(
-        children: Any? = null,
-        attrs: Any? = null
-):NodeElement("br", children, attrs)
+        vararg children: Any,
+        attrs: Attrs? = null
+) : NodeElement(*children, tag = "br", attrs = attrs)
 
 class CodeNodeElement(
-        children: Any? = null,
-        attrs: Any? = null
-):NodeElement("code", children, attrs)
+        vararg children: Any,
+        attrs: Attrs? = null
+) : NodeElement(*children, tag = "code", attrs = attrs)
 
 class ItalicNodeElement(
-        children: Any? = null,
-        attrs: Any? = null
-):NodeElement("em", children, attrs)
+        vararg children: Any,
+        attrs: Attrs? = null
+) : NodeElement(*children, tag = "em", attrs = attrs)
 
 class FigcaptionNodeElement(
-        children: Any? = null,
-        attrs: Any? = null
-):NodeElement("figcaption", children, attrs)
+        vararg children: Any,
+        attrs: Attrs? = null
+) : NodeElement(*children, tag = "figcaption", attrs = attrs)
 
 class FigureNodeElement(
-        children: Any? = null,
-        attrs: Any? = null
-):NodeElement("figure", children, attrs)
+        vararg children: Any,
+        attrs: Attrs? = null
+) : NodeElement(*children, tag = "figure", attrs =  attrs)
 
 class H3NodeElement(
-        children: Any? = null,
-        attrs: Any? = null
-):NodeElement("h3", children, attrs)
+        vararg children: Any,
+        attrs: Attrs? = null
+) : NodeElement(*children, tag = "h3", attrs =  attrs)
 
 class H4NodeElement(
-        children: Any? = null,
-        attrs: Any? = null
-):NodeElement("h4", children, attrs)
+        vararg children: Any,
+        attrs: Attrs? = null
+) : NodeElement(*children, tag = "h4", attrs = attrs)
 
 class HorizontLineNodeElement(
-        children: Any? = null,
-        attrs: Any? = null
-):NodeElement("hr", children, attrs)
+        vararg children: Any,
+        attrs: Attrs? = null
+) : NodeElement(*children, tag = "hr", attrs = attrs)
+
+
+//class ImageNodeElement(
+//        pathImage: String,
+//        description: String
+//) : NodeElement(tag = "figure", attrs = null) {
+//
+//    init {
+//        val image = ImgNodeElement(attrs = mapOf(Pair("src", upload(pathImage)?.link)))
+//        val figcaption = FigcaptionNodeElement(description)
+//        children = arrayOf(figcaption, image)
+//    }
+//}
