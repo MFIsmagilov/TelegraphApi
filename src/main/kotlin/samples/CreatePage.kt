@@ -12,13 +12,13 @@ import TelegraphApi.models.ParagraphNodeElement
 
 fun main(args: Array<String>) {
 
-    val account = TelegraphAccountBuilder("Petr", "Petrov", "").build()
+    val account = TelegraphAccountBuilder("short_name", "author_name", "").build()
     val telegraph = Telegraph(account)
     val page = telegraph.createPage(
             "My new page",
             listOf(
                     ParagraphNodeElement(
-                            ANodeElement("text", attrs = HrefAttrs("https://ya.ru"))
+                            ANodeElement("text", attrs = HrefAttrs("https://github.com/"))
                     )
             )
     )
