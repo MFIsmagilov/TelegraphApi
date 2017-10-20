@@ -11,7 +11,7 @@ data class Page(
         val title: String,
         val description: String,
         val author_name: String,
-        val content: List<Node>,
+        val content: List<NodeElement>,
         val views: Int,
         val can_edit: Boolean,
         val author_url: String? = null,
