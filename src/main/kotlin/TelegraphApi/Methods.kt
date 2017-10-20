@@ -2,7 +2,12 @@ package TelegraphApi
 
 import TelegraphApi.HttpClientWrapper.HttpClientWrapper
 import TelegraphApi.models.*
+import kotlin.concurrent.thread
 
+interface TelegraphCallback<T>{
+    fun onSuccess(obj: T)
+    fun onFailure(exception: Exception)
+}
 
 class TelegraphAccountBuilder(
         val short_name: String,
@@ -15,6 +20,17 @@ class TelegraphAccountBuilder(
     fun build(): Account {
         val author = Author(short_name, author_name, author_url)
         return requests.post(url = createPageUrl, obj = author, clazz = Account::class.java)
+    }
+
+    fun buildAsync(callback: TelegraphCallback<Account>){
+        thread(start = true) {
+            try {
+                val acc = build()
+                callback.onSuccess(acc)
+            }catch (ex: kotlin.Exception) {
+                callback.onFailure(ex)
+            }
+        }
     }
 }
 
