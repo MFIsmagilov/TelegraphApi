@@ -26,3 +26,6 @@ fun main(args: Array<String>) {
     println(page)
 }
 ```
+
+
+[More examples](https://github.com/MFIsmagilov/TelegraphApi/tree/master/src/main/kotlin/samples)
