@@ -1,6 +1,6 @@
-# TelegraphApi
-Kotlin wrapper for Telegraph API
+# Telegraph Kotlin Library
 
+Kotlin wrapper for Telegraph API
 
 # Example
 
