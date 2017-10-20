@@ -31,7 +31,7 @@ class Telegraph(val account: Account) {
     private val getViewsUrl = url + "getViews"
     private val revokeAccessTokenUrl = url + "revokeAccessToken"
 
-    fun createPage(title: String, content: List<Any>, return_content: Boolean = false): Page? {
+    fun createPage(title: String, content: List<Node>, return_content: Boolean = false): Page? {
 
         val cp = CreatorPage(
                 account.access_token,

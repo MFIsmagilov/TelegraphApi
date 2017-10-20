@@ -62,9 +62,8 @@ class HttpClientWrapper{
     private fun post(url: String, headers: Map<String, String>, file: TelegraphFile): JSONObject {
         val client = HttpClients.createDefault()
         val httpPost = HttpPost(url)
-        headers.map {
-            httpPost.addHeader(it.key, it.value)
-        }
+
+
         val builder = MultipartEntityBuilder.create()
         builder.addBinaryBody(file.name, file.file, file.contentType, file.file.absolutePath)
         val multipart = builder.build()

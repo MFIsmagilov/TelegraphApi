@@ -1,5 +1,7 @@
 package TelegraphApi.models
 
+import TelegraphApi.exceptions.EmptyTagException
+import TelegraphApi.uploaders.upload
 
 /**
  * Created by maratismagilov on 13.10.17.
@@ -9,10 +11,13 @@ interface Node
 
 open class NodeElement(
         vararg var children: Any, //Array<Node>,,,,,
-        val tag: String? = null,
+        val tag: String,
         open val attrs: Attrs? = null
-) : Node
-
+): Node {
+    init {
+        if(tag.isBlank()) throw EmptyTagException("Tag should not be empty")
+    }
+}
 
 class ImgNodeElement(
         vararg children: Any,
@@ -75,7 +80,7 @@ class FigcaptionNodeElement(
         attrs: Attrs? = null
 ) : NodeElement(*children, tag = "figcaption", attrs = attrs)
 
-class FigureNodeElement(
+open class FigureNodeElement(
         vararg children: Any,
         attrs: Attrs? = null
 ) : NodeElement(*children, tag = "figure", attrs =  attrs)
@@ -96,14 +101,14 @@ class HorizontLineNodeElement(
 ) : NodeElement(*children, tag = "hr", attrs = attrs)
 
 
-//class ImageNodeElement(
-//        pathImage: String,
-//        description: String
-//) : NodeElement(tag = "figure", attrs = null) {
-//
-//    init {
-//        val image = ImgNodeElement(attrs = mapOf(Pair("src", upload(pathImage)?.link)))
-//        val figcaption = FigcaptionNodeElement(description)
-//        children = arrayOf(figcaption, image)
-//    }
-//}
+class ImageNodeElement(
+        pathImage: String,
+        description: String
+) : FigureNodeElement() {
+
+    init {
+        val image = ImgNodeElement(attrs = SrcAttrs(upload(pathImage).link))
+        val figcaption = FigcaptionNodeElement(description)
+        children = arrayOf(figcaption, image)
+    }
+}
