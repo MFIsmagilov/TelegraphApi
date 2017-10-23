@@ -8,7 +8,7 @@ package TelegraphApi.models
 data class Account constructor(
         var author_name: String,
         val access_token: String,
-        val author_url: String,
+        var author_url: String,
         var short_name: String,
         val auth_url: String
 )

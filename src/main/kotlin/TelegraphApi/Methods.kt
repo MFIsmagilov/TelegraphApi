@@ -67,7 +67,7 @@ class Telegraph(val account: Account) {
         if(result != null) {
             account.short_name = result.short_name
             account.author_name = result.author_name
-            account.author_name = result.author_name
+            account.author_url = result.author_url ?: account.author_url
             return account
         }
         return result
