@@ -1,6 +1,6 @@
-# TelegraphApi
-Kotlin wrapper for Telegraph API
+# Telegraph Kotlin Library
 
+Kotlin wrapper for Telegraph API
 
 # Example
 
@@ -29,3 +29,6 @@ fun main(args: Array<String>) {
 
 
 [More examples](https://github.com/MFIsmagilov/TelegraphApi/tree/master/src/main/kotlin/samples)
+
+# About methods
+More information about methods can be read on [TelegraphApi page](http://telegra.ph/api)
